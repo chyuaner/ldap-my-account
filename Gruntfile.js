@@ -1,6 +1,14 @@
 module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+
+    // 建置
+    build: {
+      scss: {
+      }
+    },
+
+    // 建立伺服器
     express: {
       options: {
         background: true,
@@ -12,27 +20,27 @@ module.exports = function(grunt) {
           script: 'bin/www'
         }
       }
-//      prod: {
-//        options: {
-//          script: 'path/to/prod/server.js',
-//          node_env: 'production'
-//        }
-//      },
-//      test: {
-//        options: {
-//          script: 'path/to/test/server.js'
-//        }
-//      }
     },
+    // 檔案監視
     watch: {
       options: {
         livereload: true
       },
+      frontend: {
+        files: [ 'public/**', 'views/**',
+                 '!node_modules/**', '!bin/**' ],
+      },
+      stylesheet: {
+        files: [ 'src/scss/**/*.scss',
+                 '!node_modules/**', '!bin/**' ],
+        tasks: []
+      },
       express: {
-        files:  [ '**/*.js' ],
+        files:  [ '**/*.js', '!public/**', '!views/**', 'src/scss/**',
+                  '!node_modules/**', '!bin/**' ],
         tasks:  [ 'express:dev' ],
         options: {
-          spawn: false
+          spawn: false,
         }
       }
     }
