@@ -3,8 +3,18 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     // 建置
-    build: {
-      scss: {
+    sass: {
+      options: {
+        includePaths: ['public/components/foundation/scss']
+      },
+      dist: {
+        options: {
+          outputStyle: 'compressed',
+          sourceMap: true
+        },
+        files: {
+          'public/css/app.css': 'src/scss/app.scss'
+        }
       }
     },
 
@@ -27,17 +37,15 @@ module.exports = function(grunt) {
         livereload: true
       },
       frontend: {
-        files: [ 'public/**', 'views/**',
-                 '!node_modules/**', '!bin/**' ],
+        files: [ 'public/**', 'views/**' ],
       },
       stylesheet: {
-        files: [ 'src/scss/**/*.scss',
-                 '!node_modules/**', '!bin/**' ],
-        tasks: []
+        files: [ 'src/scss/**/*.scss' ],
+        tasks: [ 'sass' ]
       },
       express: {
         files:  [ '**/*.js', '!public/**', '!views/**', 'src/scss/**',
-                  '!node_modules/**', '!bin/**' ],
+                  '!node_modules/**', '!public/components/**', '!bin/**' ],
         tasks:  [ 'express:dev' ],
         options: {
           spawn: false,
@@ -46,9 +54,10 @@ module.exports = function(grunt) {
     }
   });
 
+  grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-express-server');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('build', []);
+  grunt.registerTask('build', ['sass']);
   grunt.registerTask('default', ['build','express:dev','watch']);
 }

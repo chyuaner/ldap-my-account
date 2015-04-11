@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+<% include module/head-include %>
+    <title>登入</title>
+  </head>
+  <body>
+    <h2>登入</h2>
+
+    <form action="/login" method="post">
+      <ul>
+        <li>
+          <label>Account:
+            <input type="text" name="account" placeholder="帳號名稱 or email" />
+          </label>
+        </li>
+        <li>
+          <label>Password:
+            <input type="password"i name="password" />
+          </label>
+        </li>
+        <ul>
+          <li>
+            <input type="submit" id="submit-form" href="#" class="button" value="登入"></a>
+          </li>
+        </ul>
+      </ul>
+    </form>
+
+<% include module/body-include %>
+  </body>
+</html>

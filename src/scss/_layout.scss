@@ -1,0 +1,144 @@
+// Functions
+@mixin box-wapper() {
+  overflow: hidden;
+
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding-left: 8%;
+  padding-right: 8%;
+}
+@mixin box-wapper-content() {
+  h2~* {
+    @extend .row;
+  }
+}
+
+// Content
+html, body {
+  padding: 0;
+}
+
+header {
+  @include box-wapper();
+
+  #contact-list {
+    overflow: hidden;
+    // Mobile Width
+    @media #{$large-up} {
+      width: 50em;
+    }
+    
+    @extend .row;
+    
+    #contact-list-my {
+      @extend .medium-6;
+      @extend .columns;
+    }
+    #contact-list-account {
+      @extend .medium-4;
+      @extend .columns;
+    }
+  }
+}
+
+section {
+  @include box-wapper();
+}
+
+#join {
+  #join-moztw:before {
+    @extend .row;
+  }
+  #join-moztw {
+    @extend .large-7;
+    @extend .columns;
+  }
+
+  #join-ttrss {
+    @extend .large-4;
+    @extend .large-offset-1;
+    @extend .columns;
+  }
+  // ---
+
+}
+#join-moztw-err451 div {
+  @extend .row;
+  img {
+    @extend .large-6;
+    @extend .columns;
+  }
+  div {
+    @extend .large-6;
+    @extend .columns;
+  }
+}
+#join-moztw-assets div {
+  @extend .row;
+  
+  img:nth-child(2) {
+    @extend .large-6;
+    @extend .columns;
+  }
+  div {
+    @extend .large-6;
+    @extend .columns;
+  }
+}
+#join-moztw-thunderbird div {
+  @extend .row;
+  
+  img {
+    @extend .large-6;
+    @extend .columns;
+  }
+}
+#join-moztw-lab-in_hs div {
+  @extend .row;
+  img {
+    @extend .large-6;
+    @extend .columns;
+  }
+  div {
+    @extend .large-6;
+    @extend .columns;
+  }
+}
+
+#works {
+  ul {
+    @include block-grid(1);
+    @media #{$large-up} {
+      @include block-grid(3);
+    }
+    
+    img {
+      max-height: 20em;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      @media #{$large-up} {
+        max-height: 10em;
+      }
+    }
+  }
+
+  div {
+    @extend .panel;
+  }
+}
+
+footer {
+  @include box-wapper();
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+
+  .col:nth-child(1):before {
+    @extend .row;
+  }
+
+  .col {
+    @extend .large-6;
+    @extend .columns;
+  }
+}
