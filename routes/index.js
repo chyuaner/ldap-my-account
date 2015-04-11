@@ -12,8 +12,9 @@ router.route('/login').
     res.render('login');
   }).
   post(function(req, res, next) {
-    res.send('a:'+req.body.account+
-             'p:'+req.body.password);
+    // res.send('a:'+req.body.account+
+    //          'p:'+req.body.password);
+    res.redirect('/u/'+req.body.account);
   });
 
 
